@@ -1,6 +1,7 @@
 package edu.rit.iste500.dubai.RapidsCemeteryAPI.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +17,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "RC_ITEM")
-@JsonIdentityInfo(scope = Item.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Item implements Serializable {
+@Table(name = "RC_TOUR")
+@JsonIdentityInfo(scope = Tour.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Tour implements Serializable {
 
-	private static final long serialVersionUID = 8741299117427927402L;
+	private static final long serialVersionUID = 8599867063575249334L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +41,7 @@ public class Item implements Serializable {
 
 	@Column(name = "Media")
 	private String media;
+
+	private List<Stop> stops;
 
 }

@@ -11,40 +11,40 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Item;
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Tour;
 
 @Repository
-public class ItemDao {
+public class TourDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public List<Item> getAllItems() {
+	public List<Tour> getAllTours() {
 
 		Session session = entityManager.unwrap(Session.class);
-		CriteriaQuery<Item> criteriaQuery = session.getCriteriaBuilder().createQuery(Item.class);
-		criteriaQuery.from(Item.class);
+		CriteriaQuery<Tour> criteriaQuery = session.getCriteriaBuilder().createQuery(Tour.class);
+		criteriaQuery.from(Tour.class);
 
 		return session.createQuery(criteriaQuery).getResultList();
 
 	}
 
-	public Item save(Item item) {
+	public Tour save(Tour tour) {
 
 		Session session = entityManager.unwrap(Session.class);
-		session.saveOrUpdate(item);
+		session.saveOrUpdate(tour);
 		session.flush();
 
-		return item;
+		return tour;
 	}
 
-	public Item getItemById(Long id) {
+	public Tour getTourById(Long id) {
 
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Item> criteria = builder.createQuery(Item.class);
-		Root<Item> root = criteria.from(Item.class);
+		CriteriaQuery<Tour> criteria = builder.createQuery(Tour.class);
+		Root<Tour> root = criteria.from(Tour.class);
 		criteria.select(root).where(builder.equal(root.get("id"), id));
 
-		List<Item> tempList = entityManager.createQuery(criteria).getResultList();
+		List<Tour> tempList = entityManager.createQuery(criteria).getResultList();
 		return tempList.size() > 0 ? tempList.get(0) : null;
 
 	}

@@ -59,6 +59,22 @@ public class ItemController {
 		return apiResponse;
 	}
 
+	@RequestMapping(value = "/getItem", method = RequestMethod.POST, produces = { "application/json" })
+	public ItemResponse getItem(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		ItemResponse apiResponse = new ItemResponse();
+
+		try {
+			apiResponse.setItem(itemService.getItemById(itemRequest.getId()));
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return apiResponse;
+	}
+
 	private void validateSaveItemRequest(ItemRequest request) throws APIException {
 		if (request.getItem() == null) {
 			throw new APIException(ExceptionEnum.BAD_REQUEST, null);
