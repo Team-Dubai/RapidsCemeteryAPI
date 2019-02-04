@@ -42,10 +42,8 @@ public enum ExceptionEnum {
 		return code;
 	}
 
-
 	public String getMessage() {
 		return this.message;
 	}
-
 
 }

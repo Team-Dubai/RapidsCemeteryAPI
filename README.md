@@ -1,4 +1,22 @@
 # RapidsCemeteryAPI
+
+**Run Guide**
+----
+
+For running in IntelliJ Idea
+
+Open the project.
+
+Install all maven dependencies
+
+Setup connection to the Postgres DB in application.properties
+
+Run the app.
+
+Api documentation and testing can be accessed at: *http://localhost:8080/swagger-ui.html#/*
+
+
+
 **Title**
 ----
   <_Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple)._>

@@ -25,4 +25,9 @@ public class ItemService {
 		return itemDao.getAllItems();
 	}
 
+	@Transactional
+	public Item getItemById(Long id) {
+		return itemDao.getItemById(id);
+	}
+
 }
