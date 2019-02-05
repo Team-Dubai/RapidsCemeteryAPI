@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.dao.ItemDao;
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.enums.CategoryEnum;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Item;
 
 @Service
@@ -30,4 +31,8 @@ public class ItemService {
 		return itemDao.getItemById(id);
 	}
 
+	@Transactional
+	public List<Item> getItemByCategory(CategoryEnum categoryEnum) {
+		return itemDao.getItemByCategory(categoryEnum);
+	}
 }

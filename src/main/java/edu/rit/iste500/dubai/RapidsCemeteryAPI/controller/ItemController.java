@@ -59,15 +59,34 @@ public class ItemController {
 		return apiResponse;
 	}
 
-	@RequestMapping(value = "/getItem", method = RequestMethod.POST, produces = { "application/json" })
-	public ItemResponse getItem(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+	@RequestMapping(value = "/getItemById", method = RequestMethod.POST, produces = { "application/json" })
+	public ItemResponse getItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
 			HttpServletResponse response) {
 
 		ItemResponse apiResponse = new ItemResponse();
 
 		try {
-			apiResponse.setItem(itemService.getItemById(itemRequest.getId()));
+			if (itemRequest.getId() > 0) {
+				apiResponse.setItem(itemService.getItemById(itemRequest.getId()));
+			}
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return apiResponse;
+	}
+
+	@RequestMapping(value = "/getItemsByCategory", method = RequestMethod.POST, produces = { "application/json" })
+	public ItemResponse getItemsByCategory(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		ItemResponse apiResponse = new ItemResponse();
+
+		try {
+			if (itemRequest.getCategory() != null) {
+				apiResponse.setItems(itemService.getItemByCategory(itemRequest.getCategory()));
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
