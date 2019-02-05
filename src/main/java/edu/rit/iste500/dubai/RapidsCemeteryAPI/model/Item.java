@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.enums.CategoryEnum;
 import lombok.Data;
 
 @Data
@@ -32,8 +35,9 @@ public class Item implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "CATEGORY")
-	private String category;
+	private CategoryEnum category;
 
 	@Column(name = "IMAGE")
 	private String image;

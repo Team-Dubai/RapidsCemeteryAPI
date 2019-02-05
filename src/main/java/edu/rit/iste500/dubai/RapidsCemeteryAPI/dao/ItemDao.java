@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.enums.CategoryEnum;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Item;
 
 @Repository
@@ -46,6 +47,18 @@ public class ItemDao {
 
 		List<Item> tempList = entityManager.createQuery(criteria).getResultList();
 		return tempList.size() > 0 ? tempList.get(0) : null;
+
+	}
+
+	public List<Item> getItemByCategory(CategoryEnum categoryEnum) {
+
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Item> criteria = builder.createQuery(Item.class);
+		Root<Item> root = criteria.from(Item.class);
+		criteria.select(root).where(builder.equal(root.get("category"), categoryEnum));
+
+		List<Item> tempList = entityManager.createQuery(criteria).getResultList();
+		return tempList;
 
 	}
 
