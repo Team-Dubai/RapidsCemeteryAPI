@@ -42,6 +42,6 @@ public class Tour implements Serializable {
 	@Column(name = "Media")
 	private String media;
 
-	private List<Stop> stops;
+	//private List<Stop> stops;
 
 }
