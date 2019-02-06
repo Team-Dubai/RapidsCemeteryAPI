@@ -29,74 +29,72 @@ public class ItemController {
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET, produces = { "application/json" })
-	public ItemResponse getAllItems(HttpServletRequest request, HttpServletResponse response) {
+	public List<Item> getAllItems(HttpServletRequest request, HttpServletResponse response) {
 
 		ItemResponse apiResponse = new ItemResponse();
+		List<Item> items = null;
 
 		try {
-			List<Item> items = itemService.getAllItems();
-			apiResponse.setItems(items);
+			items = itemService.getAllItems();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return items;
 	}
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/saveItem", method = RequestMethod.POST, produces = { "application/json" })
-	public ItemResponse saveItem(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+	public Item saveItem(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		ItemResponse apiResponse = new ItemResponse();
-
+		Item item = null;
 		try {
 			validateSaveItemRequest(itemRequest);
-			apiResponse.setItem(itemService.save(itemRequest.getItem()));
+			item = itemService.save(itemRequest.getItem());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return item;
 	}
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getItemById", method = RequestMethod.POST, produces = { "application/json" })
-	public ItemResponse getItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+	public Item getItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		ItemResponse apiResponse = new ItemResponse();
-
+		Item item = null;
 		try {
 			if (itemRequest.getId() > 0) {
-				apiResponse.setItem(itemService.getItemById(itemRequest.getId()));
+				item = itemService.getItemById(itemRequest.getId());
 			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return item;
 	}
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getItemsByCategory", method = RequestMethod.POST, produces = { "application/json" })
-	public ItemResponse getItemsByCategory(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+	public List<Item> getItemsByCategory(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		ItemResponse apiResponse = new ItemResponse();
+		List<Item> items = null;
 
 		try {
 			if (itemRequest.getCategory() != null) {
-				apiResponse.setItems(itemService.getItemByCategory(itemRequest.getCategory()));
+				items = itemService.getItemByCategory(itemRequest.getCategory());
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return items;
 	}
 
 	private void validateSaveItemRequest(ItemRequest request) throws APIException {
