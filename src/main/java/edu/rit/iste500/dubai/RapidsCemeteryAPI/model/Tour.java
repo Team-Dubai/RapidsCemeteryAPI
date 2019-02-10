@@ -3,11 +3,16 @@ package edu.rit.iste500.dubai.RapidsCemeteryAPI.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -42,6 +47,10 @@ public class Tour implements Serializable {
 	@Column(name = "Media")
 	private String media;
 
-	//private List<Stop> stops;
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@OrderColumn(name = "index")
+	@JoinTable(name = "RC_TOUR_STOPS", joinColumns = { @JoinColumn(name = "tour_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "stop_id") })
+	private List<Stop> stops;
 
 }
