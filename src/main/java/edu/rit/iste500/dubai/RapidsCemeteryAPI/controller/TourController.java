@@ -27,52 +27,54 @@ public class TourController {
 	private TourService tourService;
 
 	@RequestMapping(value = "/getAllTours", method = RequestMethod.GET, produces = { "application/json" })
-	public TourResponse getAllTours(HttpServletRequest request, HttpServletResponse response) {
+	public List<Tour> getAllTours(HttpServletRequest request, HttpServletResponse response) {
 
 		TourResponse apiResponse = new TourResponse();
-
+		List<Tour> tours = null;
 		try {
-			List<Tour> tours = tourService.getAllTours();
-			apiResponse.setTours(tours);
+			tours = tourService.getAllTours();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return tours;
 	}
 
-	@RequestMapping(value = "/saveTour", method = RequestMethod.POST, produces = { "application/json" })
-	public TourResponse saveTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
-			HttpServletResponse response) {
-
-		TourResponse apiResponse = new TourResponse();
-
-		try {
-			validateSaveTourRequest(tourRequest);
-			apiResponse.setTour(tourService.save(tourRequest.getTour()));
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return apiResponse;
-	}
+	// @RequestMapping(value = "/saveTour", method = RequestMethod.POST, produces =
+	// { "application/json" })
+	// public TourResponse saveTour(@RequestBody TourRequest tourRequest,
+	// HttpServletRequest request,
+	// HttpServletResponse response) {
+	//
+	// TourResponse apiResponse = new TourResponse();
+	//
+	// try {
+	// validateSaveTourRequest(tourRequest);
+	// apiResponse.setTour(tourService.save(tourRequest.getTour()));
+	//
+	// } catch (Exception ex) {
+	// ex.printStackTrace();
+	// }
+	//
+	// return apiResponse;
+	// }
 
 	@RequestMapping(value = "/getTour", method = RequestMethod.POST, produces = { "application/json" })
-	public TourResponse getTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
+	public Tour getTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
 			HttpServletResponse response) {
 
 		TourResponse apiResponse = new TourResponse();
+		Tour tour = null;
 
 		try {
-			apiResponse.setTour(tourService.getTourById(tourRequest.getId()));
+			tour = tourService.getTourById(tourRequest.getId());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return apiResponse;
+		return tour;
 	}
 
 	private void validateSaveTourRequest(TourRequest request) throws APIException {
