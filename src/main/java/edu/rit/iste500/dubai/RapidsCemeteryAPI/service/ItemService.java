@@ -35,4 +35,9 @@ public class ItemService {
 	public List<Item> getItemByCategory(CategoryEnum categoryEnum) {
 		return itemDao.getItemByCategory(categoryEnum);
 	}
+
+	@Transactional
+	public void removeItemById(Long id) {
+		itemDao.removeItemById(id);
+	}
 }

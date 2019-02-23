@@ -26,7 +26,7 @@ import lombok.Data;
 @JsonIdentityInfo(scope = Tour.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Tour implements Serializable {
 
-	private static final long serialVersionUID = 8599867063575249334L;
+	private static final long serialVersionUID = -1927897077557960709L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public class Tour implements Serializable {
 	@Column(name = "Media")
 	private String media;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.REMOVE })
 	@OrderColumn(name = "index")
 	@JoinTable(name = "RC_TOUR_STOPS", joinColumns = { @JoinColumn(name = "tour_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "stop_id") })

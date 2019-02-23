@@ -19,6 +19,8 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Item;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.ItemRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.response.ItemResponse;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.ItemService;
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.PasswordService;
+import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.UserService;
 
 @RestController
 @RequestMapping(value = "/api/item", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -26,6 +28,12 @@ public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
+
+	@Autowired
+	private PasswordService passwordService;
+
+	@Autowired
+	private UserService userService;
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET, produces = { "application/json" })
@@ -95,6 +103,27 @@ public class ItemController {
 		}
 
 		return items;
+	}
+
+	@CrossOrigin(origins = { "*" })
+	@RequestMapping(value = "/removeItemById", method = RequestMethod.POST, produces = { "application/json" })
+	public boolean removeItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
+			HttpServletResponse response) {
+		//
+		// try {
+		// if (itemRequest.getId() > 0) {
+		// itemService.removeItemById(itemRequest.getId());
+		// return true;
+		//
+		// }
+		//
+		// } catch (Exception ex) {
+		// ex.printStackTrace();
+		// return false;
+		//
+		// }
+		return false;
+
 	}
 
 	private void validateSaveItemRequest(ItemRequest request) throws APIException {

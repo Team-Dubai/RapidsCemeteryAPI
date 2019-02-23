@@ -34,7 +34,7 @@ public class Stop implements Serializable {
 	@Column(name = "NAME")
 	private String name;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.REMOVE })
 	@JoinTable(name = "RC_STOP_ITEMS", joinColumns = { @JoinColumn(name = "stop_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "item_id") })
 	private List<Item> items;
