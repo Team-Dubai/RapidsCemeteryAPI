@@ -1,7 +1,10 @@
 package edu.rit.iste500.dubai.RapidsCemeteryAPI.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,6 +12,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -44,5 +50,28 @@ public class Item implements Serializable {
 
 	@Column(name = "Media")
 	private String media;
+
+	@Column(name = "DOB")
+	private LocalDate dateOfBirth;
+
+	@Column(name = "DOD")
+	private String dateOfDeath;
+
+	@Column(name = "place_of_birth")
+	private String placeOfBirth;
+
+	@Column(name = "plot")
+	private String plot;
+
+	@Column(name = "veteran_info")
+	private String veteranInformation;
+
+	@Column(name = "notes")
+	private String notes;
+
+	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@JoinTable(name = "RC_ITEM_TAGS", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "tag_id") })
+	private List<Tag> tags;
 
 }

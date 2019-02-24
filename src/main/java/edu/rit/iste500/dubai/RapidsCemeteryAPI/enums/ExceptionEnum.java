@@ -16,7 +16,8 @@ public enum ExceptionEnum {
 	BAD_CURRENT_PASSWORD(150, "badCurrentPassword"),
 	INSUFFICIENT_PRIVILEGES(160, "insufficientPrivileges"),
 	NO_EMAIL_BIND_PERSON(170, "noEmailRequestedByPerson"),
-	PASSWORD_NOT_STRONG(180, "passwordNotStrongEnough");
+	PASSWORD_NOT_STRONG(180, "passwordNotStrongEnough"),
+	USER_NOT_FOUND(190, "userNotFound");
 
 	private Integer code;
 	private String message;

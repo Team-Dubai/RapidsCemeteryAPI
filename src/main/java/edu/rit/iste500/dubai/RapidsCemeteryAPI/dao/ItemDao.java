@@ -62,4 +62,27 @@ public class ItemDao {
 
 	}
 
+	public void removeItemById(long id) {
+		Item item;
+
+		Session session = entityManager.unwrap(Session.class);
+		// session.createQuery("delete from Item where id="+id);
+		session.createSQLQuery("delete from rc_item where id=" + id);
+		session.delete(getItemById(id));
+		// item = getItemById(id);
+		// session.delete(item);
+
+		// This makes the pending delete to be done
+		session.flush();
+
+		// Query query = session.createQuery("delete Item where Item.id > :id");
+		// query.setParameter("id", id);
+		//
+		// int result = query.executeUpdate();
+		//
+		// if (result > 0) {
+		// System.out.println("Expensive products was removed");
+		// }
+	}
+
 }
