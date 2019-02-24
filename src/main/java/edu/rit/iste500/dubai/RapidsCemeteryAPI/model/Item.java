@@ -60,6 +60,9 @@ public class Item implements Serializable {
 	@Column(name = "place_of_birth")
 	private String placeOfBirth;
 
+	@Column(name = "place_of_death")
+	private String placeOfDeath;
+
 	@Column(name = "plot")
 	private String plot;
 
