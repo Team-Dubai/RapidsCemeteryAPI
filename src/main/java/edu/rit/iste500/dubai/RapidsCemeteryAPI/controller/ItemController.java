@@ -109,19 +109,19 @@ public class ItemController {
 	@RequestMapping(value = "/removeItemById", method = RequestMethod.POST, produces = { "application/json" })
 	public boolean removeItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
 			HttpServletResponse response) {
-		//
-		// try {
-		// if (itemRequest.getId() > 0) {
-		// itemService.removeItemById(itemRequest.getId());
-		// return true;
-		//
-		// }
-		//
-		// } catch (Exception ex) {
-		// ex.printStackTrace();
-		// return false;
-		//
-		// }
+
+		try {
+			if (itemRequest.getId() > 0) {
+				itemService.removeItemById(itemRequest.getId());
+				return true;
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+
+		}
 		return false;
 
 	}

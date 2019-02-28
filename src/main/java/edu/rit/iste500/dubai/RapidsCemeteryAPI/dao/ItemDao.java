@@ -67,7 +67,7 @@ public class ItemDao {
 
 		Session session = entityManager.unwrap(Session.class);
 		// session.createQuery("delete from Item where id="+id);
-		session.createSQLQuery("delete from rc_item where id=" + id);
+		// session.createSQLQuery("delete from rc_item where id=" + id);
 		session.delete(getItemById(id));
 		// item = getItemById(id);
 		// session.delete(item);
