@@ -1,7 +1,6 @@
 package edu.rit.iste500.dubai.RapidsCemeteryAPI.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -52,7 +51,7 @@ public class Item implements Serializable {
 	private String media;
 
 	@Column(name = "DOB")
-	private LocalDate dateOfBirth;
+	private String dateOfBirth;
 
 	@Column(name = "DOD")
 	private String dateOfDeath;
