@@ -53,6 +53,7 @@ public class LoginController {
 				String token = Jwts.builder().setSubject(loginRequest.getUsername())
 						.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 						.signWith(SignatureAlgorithm.HS512, SecurityConstants.ENCODER_SECRET.getBytes()).compact();
+
 				response.setToken(SecurityConstants.TOKEN_PREFIX + token);
 
 			} else {
