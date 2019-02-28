@@ -65,7 +65,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 				.signWith(SignatureAlgorithm.HS512, SecurityConstants.ENCODER_SECRET.getBytes()).compact();
 		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
-		response.addHeader("Access-Control-Exposed-Headers", "jwt");
+		response.addHeader("Access-Control-Expose-Headers", "jwt");
 
 	}
 
