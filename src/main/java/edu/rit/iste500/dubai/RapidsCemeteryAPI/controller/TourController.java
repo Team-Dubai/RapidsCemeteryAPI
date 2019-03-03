@@ -41,24 +41,22 @@ public class TourController {
 		return tours;
 	}
 
-	// @RequestMapping(value = "/saveTour", method = RequestMethod.POST, produces =
-	// { "application/json" })
-	// public TourResponse saveTour(@RequestBody TourRequest tourRequest,
-	// HttpServletRequest request,
-	// HttpServletResponse response) {
-	//
-	// TourResponse apiResponse = new TourResponse();
-	//
-	// try {
-	// validateSaveTourRequest(tourRequest);
-	// apiResponse.setTour(tourService.save(tourRequest.getTour()));
-	//
-	// } catch (Exception ex) {
-	// ex.printStackTrace();
-	// }
-	//
-	// return apiResponse;
-	// }
+	@RequestMapping(value = "/saveTour", method = RequestMethod.POST, produces = { "application/json" })
+	public TourResponse saveTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		TourResponse apiResponse = new TourResponse();
+
+		try {
+			validateSaveTourRequest(tourRequest);
+			apiResponse.setTour(tourService.save(tourRequest.getTour()));
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return apiResponse;
+	}
 
 	@RequestMapping(value = "/getTour", method = RequestMethod.POST, produces = { "application/json" })
 	public Tour getTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
