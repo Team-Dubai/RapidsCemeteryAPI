@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -71,7 +72,7 @@ public class Item implements Serializable {
 	@Column(name = "notes")
 	private String notes;
 
-	@ManyToMany(cascade = { CascadeType.REMOVE })
+	@ManyToMany(cascade = { CascadeType.REMOVE }, fetch = FetchType.EAGER)
 	@JoinTable(name = "RC_ITEM_TAGS", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "tag_id") })
 	private List<Tag> tags;

@@ -37,6 +37,11 @@ public class TourController {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		for (Tour tour : tours) {
+			if (tour.getStops().contains(null)) {
+				tour.getStops().remove(null);
+			}
+		}
 
 		return tours;
 	}
@@ -71,7 +76,9 @@ public class TourController {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
+		if (tour.getStops().contains(null)) {
+			tour.getStops().remove(null);
+		}
 		return tour;
 	}
 

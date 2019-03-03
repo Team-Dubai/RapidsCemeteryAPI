@@ -32,6 +32,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api-docs", "/v2/api-docs", "/configuration/ui", "/swagger-resources",
 						"/configuration/security", "/swagger-ui.html", "/webjars/**",
 						"/swagger-resources/configuration/ui", "/api/item/*", "/login/*", "/api/tour/*", "/api/mail/*",
+						"/api/stop/*",
 						"/api/tag/*")
 				.permitAll().anyRequest().authenticated().and()
 				.addFilterBefore(new JWTAuthenticationFilter(authenticationManager(), getApplicationContext()),

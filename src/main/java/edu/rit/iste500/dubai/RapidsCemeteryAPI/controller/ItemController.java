@@ -19,8 +19,6 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Item;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.ItemRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.response.ItemResponse;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.ItemService;
-import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.PasswordService;
-import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.UserService;
 
 @RestController
 @RequestMapping(value = "/api/item", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -28,12 +26,6 @@ public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
-
-	@Autowired
-	private PasswordService passwordService;
-
-	@Autowired
-	private UserService userService;
 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET, produces = { "application/json" })
