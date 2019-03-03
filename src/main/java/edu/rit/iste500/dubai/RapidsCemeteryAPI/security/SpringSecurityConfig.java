@@ -31,7 +31,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, SecurityConstants.FORGOTTEN_PASSWORD).permitAll()
 				.antMatchers("/api-docs", "/v2/api-docs", "/configuration/ui", "/swagger-resources",
 						"/configuration/security", "/swagger-ui.html", "/webjars/**",
-						"/swagger-resources/configuration/ui", "/api/item/*", "/login", "/tour/*")
+						"/swagger-resources/configuration/ui", "/api/item/*", "/login/*", "/api/tour/*", "/api/mail/*",
+						"/api/tag/*")
 				.permitAll().anyRequest().authenticated().and()
 				.addFilterBefore(new JWTAuthenticationFilter(authenticationManager(), getApplicationContext()),
 						UsernamePasswordAuthenticationFilter.class)
