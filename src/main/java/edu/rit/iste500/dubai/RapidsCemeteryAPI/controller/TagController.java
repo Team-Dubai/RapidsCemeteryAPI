@@ -80,21 +80,21 @@ public class TagController {
 	@RequestMapping(value = "/removeTagById", method = RequestMethod.POST, produces = { "application/json" })
 	public boolean removeTagById(@RequestBody TagRequest tagRequest, HttpServletRequest request,
 			HttpServletResponse response) {
-		//
-		// try {
-		// if (tagRequest.getId() > 0) {
-		// tagService.removeTagById(tagRequest.getId());
-		// return true;
-		//
-		// }
-		//
-		// } catch (Exception ex) {
-		// ex.printStackTrace();
-		// return false;
-		//
-		// }
 
-		return true;
+		try {
+			if (tagRequest.getId() > 0) {
+				tagService.removeTagById(tagRequest.getId());
+				return true;
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+
+		}
+
+		return false;
 
 	}
 

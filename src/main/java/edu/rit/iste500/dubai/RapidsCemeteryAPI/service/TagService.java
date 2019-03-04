@@ -44,4 +44,9 @@ public class TagService {
 		return tagDao.getAllTags();
 	}
 
+	@Transactional
+	public void removeTagById(Long id) {
+		tagDao.removeTagById(id);
+	}
+
 }
