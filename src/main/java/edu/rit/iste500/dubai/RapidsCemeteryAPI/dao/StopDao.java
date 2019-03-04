@@ -20,11 +20,14 @@ public class StopDao {
 
 	public List<Stop> getAllStops() {
 
-		Session session = entityManager.unwrap(Session.class);
-		CriteriaQuery<Stop> criteriaQuery = session.getCriteriaBuilder().createQuery(Stop.class);
-		criteriaQuery.from(Stop.class);
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Stop> criteria = builder.createQuery(Stop.class);
+		Root<Stop> root = criteria.from(Stop.class);
+		criteria.orderBy(builder.asc(root.get("id")));
 
-		return session.createQuery(criteriaQuery).getResultList();
+		List<Stop> tempList = entityManager.createQuery(criteria).getResultList();
+		return tempList;
+		// return session.createQuery(criteriaQuery).getResultList();
 
 	}
 
