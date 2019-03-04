@@ -61,4 +61,12 @@ public class TagDao {
 
 	}
 
+	public void removeTagById(long id) {
+
+		Session session = entityManager.unwrap(Session.class);
+		session.delete(getTagById(id));
+		session.flush();
+
+	}
+
 }
