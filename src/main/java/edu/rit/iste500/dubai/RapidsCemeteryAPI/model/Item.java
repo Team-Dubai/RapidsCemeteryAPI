@@ -17,16 +17,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.enums.CategoryEnum;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "RC_ITEM")
-@JsonIdentityInfo(scope = Item.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+// @JsonIdentityInfo(scope = Item.class, generator =
+// ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Item implements Serializable {
 
 	private static final long serialVersionUID = 8741299117427927402L;
