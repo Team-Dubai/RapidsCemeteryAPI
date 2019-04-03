@@ -22,7 +22,7 @@ public class MailController {
 	@RequestMapping(value = "/sendContactMail", method = RequestMethod.POST, produces = { "application/json" })
 	public Boolean sendContactMail(@RequestBody MailRequest mailRequest, HttpServletResponse response) {
 		try {
-			mailService.sendMail(mailRequest.getFromMail(), "bep4144@rit.edu", "Rapids cemetry - contact mail",
+			mailService.sendMail(mailRequest.getFromMail(), "bep4144@rit.edu", "Rapids Cemetery",
 					mailRequest.getMessage(), false);
 			return true;
 
