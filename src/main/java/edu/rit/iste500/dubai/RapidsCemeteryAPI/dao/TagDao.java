@@ -64,17 +64,21 @@ public class TagDao {
 	public void removeTagById(long id) {
 
 		Session session = entityManager.unwrap(Session.class);
-		entityManager.createNativeQuery("ALTER TABLE rc_item_tags DISABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_tag DISABLE TRIGGER ALL;").executeUpdate();
-		entityManager.flush();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item_tags DISABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_tag DISABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.flush();
 		entityManager.createNativeQuery("delete from RC_ITEM_TAGS where tag_id = :id").setParameter("id", id)
 				.executeUpdate();
 		entityManager.flush();
 		session.delete(getTagById(id));
 		session.flush();
-		entityManager.createNativeQuery("ALTER TABLE rc_item_tags ENABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_tag ENABLE TRIGGER ALL;").executeUpdate();
-		entityManager.flush();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item_tags ENABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_tag ENABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.flush();
 
 	}
 
