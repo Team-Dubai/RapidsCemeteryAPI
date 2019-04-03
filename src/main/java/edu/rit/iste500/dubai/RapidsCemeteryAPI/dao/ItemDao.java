@@ -69,10 +69,13 @@ public class ItemDao {
 
 
 		Session session = entityManager.unwrap(Session.class);
-		entityManager.createNativeQuery("ALTER TABLE rc_item_tags DISABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_stop_items DISABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_item DISABLE TRIGGER ALL;").executeUpdate();
-		entityManager.flush();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item_tags DISABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_stop_items DISABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item DISABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.flush();
 
 		entityManager.createNativeQuery("delete from RC_ITEM_TAGS where item_id = :id").setParameter("id", id)
 				.executeUpdate();
@@ -82,11 +85,14 @@ public class ItemDao {
 
 		session.delete(getItemById(id));
 		session.flush();
-		entityManager.createNativeQuery("ALTER TABLE rc_item_tags ENABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_stop_items ENABLE TRIGGER ALL;").executeUpdate();
-		entityManager.createNativeQuery("ALTER TABLE rc_item ENABLE TRIGGER ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item_tags ENABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_stop_items ENABLE TRIGGER
+		// ALL;").executeUpdate();
+		// entityManager.createNativeQuery("ALTER TABLE rc_item ENABLE TRIGGER
+		// ALL;").executeUpdate();
 
-		entityManager.flush();
+		// entityManager.flush();
 
 
 	}
