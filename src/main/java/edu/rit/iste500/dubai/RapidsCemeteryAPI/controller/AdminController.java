@@ -19,6 +19,10 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.UserRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.PasswordService;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.UserService;
 
+/*
+This controller facilitates the GET methods used to get users and log them into the admin panel
+*/
+
 @RestController
 @RequestMapping(value = "/api/admin", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminController {
