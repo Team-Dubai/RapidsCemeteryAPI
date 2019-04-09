@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.MailRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.MailService;
-
+/*
+MailController
+*/
 @RestController
 @RequestMapping(value = "/api/mail", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MailController {
 
 	@Autowired
 	private MailService mailService;
-
+	
+	//sendContactMail POST method that will send mail to users
 	@RequestMapping(value = "/sendContactMail", method = RequestMethod.POST, produces = { "application/json" })
 	public Boolean sendContactMail(@RequestBody MailRequest mailRequest, HttpServletResponse response) {
 		try {
