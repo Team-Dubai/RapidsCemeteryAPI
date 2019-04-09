@@ -18,14 +18,16 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Tour;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.TourRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.response.TourResponse;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.TourService;
-
+/*
+TourController
+*/
 @RestController
 @RequestMapping(value = "/api/tour", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TourController {
 
 	@Autowired
 	private TourService tourService;
-
+	//getAllTours GET method that will return all tours through a JSON Object
 	@RequestMapping(value = "/getAllTours", method = RequestMethod.GET, produces = { "application/json" })
 	public List<Tour> getAllTours(HttpServletRequest request, HttpServletResponse response) {
 
@@ -45,7 +47,8 @@ public class TourController {
 
 		return tours;
 	}
-
+	
+	//saveTour POST method that will save a newly created tour to the database
 	@RequestMapping(value = "/saveTour", method = RequestMethod.POST, produces = { "application/json" })
 	public TourResponse saveTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -62,7 +65,8 @@ public class TourController {
 
 		return apiResponse;
 	}
-
+	
+	//getTour POST method that will get all tour stops 
 	@RequestMapping(value = "/getTour", method = RequestMethod.POST, produces = { "application/json" })
 	public Tour getTour(@RequestBody TourRequest tourRequest, HttpServletRequest request,
 			HttpServletResponse response) {
