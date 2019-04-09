@@ -38,7 +38,8 @@ public class LoginController {
 
 	@Autowired
 	private PasswordService passwordService;
-
+	
+	//login POST method that will use the submitted login info to log the user into the admin panel
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = { "application/json" })
 	public LoginResponse login(@RequestBody LoginRequest loginRequest) {
 
@@ -67,7 +68,8 @@ public class LoginController {
 
 		return response;
 	}
-
+	
+	//forgottenPassword POST method that will allow the user to reset password using email
 	@RequestMapping(value = "/login/forgottenPassword", method = RequestMethod.POST, produces = { "application/json" })
 	public ResetPasswordResponse forgottenPassword(@RequestBody ForgottenPasswordRequest forgottenPasswordRequest) {
 
