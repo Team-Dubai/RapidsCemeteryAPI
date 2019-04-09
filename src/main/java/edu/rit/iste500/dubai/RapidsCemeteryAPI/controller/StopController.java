@@ -26,7 +26,8 @@ public class StopController {
 
 	@Autowired
 	private StopService stopService;
-
+	
+	//getAllStops GET method that will return a JSON object that contains all stop data
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllStops", method = RequestMethod.GET, produces = { "application/json" })
 	public List<Stop> getAllStops(HttpServletRequest request, HttpServletResponse response) {
@@ -43,7 +44,8 @@ public class StopController {
 
 		return stops;
 	}
-
+	
+	//saveStop POST method that will save a new stop entered by the admin
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/saveStop", method = RequestMethod.POST, produces = { "application/json" })
 	public Stop saveStop(@RequestBody StopRequest stopRequest, HttpServletRequest request,
@@ -60,7 +62,8 @@ public class StopController {
 
 		return stop;
 	}
-
+	
+	//getStopsById POST method that will return a specific stop based off the entered ID
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getStopById", method = RequestMethod.POST, produces = { "application/json" })
 	public Stop getStopById(@RequestBody StopRequest stopRequest, HttpServletRequest request,
@@ -78,7 +81,8 @@ public class StopController {
 
 		return stop;
 	}
-
+	
+	//removeStopById POST method that will delete a specific stop
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/removeStopById", method = RequestMethod.POST, produces = { "application/json" })
 	public boolean removeStopById(@RequestBody StopRequest stopRequest, HttpServletRequest request,
