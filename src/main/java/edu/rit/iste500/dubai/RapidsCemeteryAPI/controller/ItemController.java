@@ -20,13 +20,18 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.ItemRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.response.ItemResponse;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.ItemService;
 
+/*
+ItemController
+
+*/
 @RestController
 @RequestMapping(value = "/api/item", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
-
+	
+	//getAllItems GET method that will return all items as a json file
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET, produces = { "application/json" })
 	public List<Item> getAllItems(HttpServletRequest request, HttpServletResponse response) {
@@ -36,14 +41,13 @@ public class ItemController {
 
 		try {
 			items = itemService.getAllItems();
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
 		return items;
 	}
-
+	
+	//saveItem POST method that will save a new item into the database
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/saveItem", method = RequestMethod.POST, produces = { "application/json" })
 	public Item saveItem(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
@@ -60,7 +64,8 @@ public class ItemController {
 
 		return item;
 	}
-
+	
+	//getItemById POST method that will get a specific item by using the itemRequest.getId() method 
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getItemById", method = RequestMethod.POST, produces = { "application/json" })
 	public Item getItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
@@ -78,7 +83,8 @@ public class ItemController {
 
 		return item;
 	}
-
+	
+	//getItemsByCategory POST method, passes the category
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getItemsByCategory", method = RequestMethod.POST, produces = { "application/json" })
 	public List<Item> getItemsByCategory(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
@@ -96,7 +102,8 @@ public class ItemController {
 
 		return items;
 	}
-
+	
+	//removeItemById POST method. Deletes item from database
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/removeItemById", method = RequestMethod.POST, produces = { "application/json" })
 	public boolean removeItemById(@RequestBody ItemRequest itemRequest, HttpServletRequest request,
