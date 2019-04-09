@@ -26,7 +26,8 @@ public class AdminController {
 	private UserService userService;
 	@Autowired
 	private PasswordService passwordService;
-
+	
+	//POST method for fetchAllUsers, returns a JSON object that contains all users data
 	@RequestMapping(value = "/fetchAllUsers", method = RequestMethod.POST, produces = { "application/json" })
 	public List<User> fetchAllUsers(HttpServletRequest request, HttpServletResponse response) {
 
@@ -41,7 +42,8 @@ public class AdminController {
 
 		return users;
 	}
-
+	
+	//POST method for saveUser, method logs user into admin panel
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST, produces = { "application/json" })
 	public User saveUser(@RequestBody UserRequest userRequest, HttpServletRequest request,
 			HttpServletResponse response) {
