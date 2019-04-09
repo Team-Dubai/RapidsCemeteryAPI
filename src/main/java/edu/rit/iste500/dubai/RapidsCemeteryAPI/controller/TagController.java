@@ -18,14 +18,17 @@ import edu.rit.iste500.dubai.RapidsCemeteryAPI.exception.APIException;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.model.Tag;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.request.TagRequest;
 import edu.rit.iste500.dubai.RapidsCemeteryAPI.service.TagService;
-
+/*
+TagController
+*/
 @RestController
 @RequestMapping(value = "/api/tag", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TagController {
 
 	@Autowired
 	private TagService tagService;
-
+	
+	//getAllTags GET method that will return a JSON object containing all tags
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getAllTags", method = RequestMethod.GET, produces = { "application/json" })
 	public List<Tag> getAllTags(HttpServletRequest request, HttpServletResponse response) {
@@ -41,7 +44,8 @@ public class TagController {
 
 		return tags;
 	}
-
+	
+	//saveTag POST method that will add a new tag to the database, accessed through the admin panel
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/saveTag", method = RequestMethod.POST, produces = { "application/json" })
 	public Tag saveTag(@RequestBody TagRequest tagRequest, HttpServletRequest request, HttpServletResponse response) {
@@ -57,7 +61,8 @@ public class TagController {
 
 		return tag;
 	}
-
+	
+	//getTagById POST method that will return a specific tag based off the specific ID entered
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/getTagById", method = RequestMethod.POST, produces = { "application/json" })
 	public Tag getTagById(@RequestBody TagRequest tagRequest, HttpServletRequest request,
@@ -75,7 +80,8 @@ public class TagController {
 
 		return tag;
 	}
-
+	
+	//removeTagsById POST method that will delete specific tags from the database using the tags ID
 	@CrossOrigin(origins = { "*" })
 	@RequestMapping(value = "/removeTagById", method = RequestMethod.POST, produces = { "application/json" })
 	public boolean removeTagById(@RequestBody TagRequest tagRequest, HttpServletRequest request,
